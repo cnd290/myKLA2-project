@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #F7F6F2;
+    font-family: 'Balsamiq Sans','Microsoft JhengHei';
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    /*自動隱藏超出的文字或圖片*/
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: center;
+}

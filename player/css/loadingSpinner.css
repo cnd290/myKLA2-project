@@ -1,0 +1,57 @@
+#loadingOutside {
+    display:flex;
+    justify-content:center;
+    width:100vw;
+}
+
+.loading {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    backface-visibility: hidden;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 1s;
+    width: 25vh;
+    height: 25vh;
+    z-index:9999;
+    margin-top: 35vh;
+}
+
+.loading .message {
+    font-size: 3vh;
+    color: #44515E;
+    text-align: center;
+}
+
+.loading .spinner {
+    position: absolute;
+    width: 25vh;
+    height: 25vh;
+    animation: spin 1s linear infinite;
+    border: 25px solid white;
+    border-top: 25px solid #E6D8BB;
+    border-radius: 50%;
+}
+
+.loaded .loading{/* loaded裡面的loading */
+    opacity: 0;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin2 {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

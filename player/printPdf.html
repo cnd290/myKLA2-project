@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Result Score</title>
+
+    <style>
+
+        #resultTable {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 70%;
+            margin: 5vh auto;   /*藉由margin auto*/
+        }
+
+        #resultTable td, #resultTable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #resultTable tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+
+        #resultTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #849db1;
+            color: white;
+        }
+
+        /* 為了讓成績表在匯出時自動勾起有顏色 */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                -moz-print-color-adjust: exact;
+                -ms-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <table id="resultTable">
+        <thead>
+            <tr>
+                <th>Time</td>
+                <th>Action Name</td>
+                <th>Detected Body Part</td>
+                <th>Score</td>
+            </tr>
+        </thead>
+        <tbody id="exportTableBody">
+        </tbody>
+    </table>
+    <script>
+        let resultPdf = sessionStorage.getItem('resultPdf');    //拿取要顯示在匯出table上的內容 從scorelist.js那邊傳的
+        let resultPdfArr = JSON.parse(resultPdf);
+
+        let exportTableBody = document.getElementById('exportTableBody');
+        exportTableBody.innerHTML = ""; //table要先清空 不然資料會一直延伸下去
+
+        // 讓畫面上顯示一筆一筆的成績資料
+        for (let i = 0; i < resultPdfArr.length; i++) {
+            exportTableBody.innerHTML += makeRow(resultPdfArr[i]);
+        }
+
+        function makeRow(tableContent) {
+
+            const row = "<tr>" +
+                "<td>" + tableContent[0] + "</td>" +
+                "<td>" + tableContent[1] + "</td>" +
+                "<td>" + tableContent[2] + "</td>" +
+                "<td>" + tableContent[3] + "</td>" +
+            "</tr>";
+
+            return row;
+        }
+
+        // 打開列印視窗來列印當前的文件
+        window.print();
+        //若不使用setTimeout直接寫window.close()的話 會造成有成績Table的頁面跟列印彈跳視窗直接被關掉
+        //若不寫window.close()的話 列印彈跳視窗在按下列印後不會被關掉
+        setTimeout ("CloseWin()" , 1000);
+        function CloseWin(){
+            window.close();
+        }
+
+    </script>
+</body>
+
+</html>

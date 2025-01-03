@@ -1,0 +1,259 @@
+.col-1 {
+    width: 100%;
+    flex-basis: 59%;
+    display: flex;
+    flex-direction: column;
+    margin-right:2vw;
+}
+
+/* alertPanel */
+
+#alertPanel {
+    margin-top: 11vh;
+    font-size: 2.5vh;
+    color: black;
+    display: flex;
+    height: 8.5vh;
+    width: 600px;
+    align-items: center;
+}
+
+#alertPanel button {
+    border-radius: 10%;
+    padding: 5px 10px;
+}
+
+#alertContent {
+    color: #9dadc2;
+    font-size: 2.5vh;
+    display: inline-block;
+    visibility: hidden;
+    white-space: nowrap;
+}
+
+#confirmBtn {
+    display: none;
+    margin-left: 5%;
+    color: #6c86a8;
+    border: 0px solid #6c86a8;
+    background-color: #E6D8BB;
+}
+
+#cancel {
+    display: inline-block;
+    visibility: hidden;
+    margin-left: 4%;
+    color: #6c86a8;
+    border: 0px solid #6c86a8;
+    background-color: #E6D8BB;
+}
+
+/* alertPanel end */
+
+/* 播放器區域 */
+
+#outsideFrame {
+    width: 96%;
+    height: 68%;
+    background-color: #9dadc2;
+}
+
+#vrmWindow {
+    position: absolute;
+}
+
+#KLA {
+    position: relative;
+    top: 2.5%;
+    right: -1.5%;
+    background-color: #dceaf5;
+    width: 97%;
+    height: 89%;
+}
+
+#notice {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    z-index: 999;
+    font-size: 12px;
+    color: #b39d9d;
+}
+
+#noticeKLA {
+    /*若為relative 字消失後 空間往上移*/
+    position: absolute;
+    top: 10%;
+    left: 3%;
+    z-index: 999;
+    font-size: 12px;
+    color: #b39d9d;
+}
+
+#num {
+    width: 12vw; 
+    height: 10%; 
+    z-index: 5; 
+    position: absolute; 
+    -webkit-text-stroke: 2px #929292; 
+    color: white; 
+    left: 32vw; 
+    top: 1.5vh;
+    font-size: 3vw;
+    text-align: right;
+}
+
+.number-anim {
+    animation: animation_zoomIn 2s linear;
+}
+
+@keyframes animation_zoomIn {
+    0% {
+        font-size: 100px;
+    }
+    33% {
+        font-size: 50px;
+    }
+    34% {
+        font-size: 100px;
+    }
+    67% {
+        font-size: 50px;
+    }
+    68% {
+        font-size: 100px;
+    }
+    100% {
+        font-size: 50px;
+    }
+}
+
+/* 播放器按鈕區域 */
+
+#toolBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.9vw 2vw;
+}
+
+#playerBtnContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.35vw;
+}
+
+#playerBtnContainer button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#playerBtnContainer button img {
+    height: 1.8vw;
+}
+
+#start {
+    background-color: transparent;
+    border: 0px;
+    width: 1.8vw;
+    height: 1.8vw;
+    border-radius: 50%;
+}
+
+#start:hover {
+    background-color: #5e7280
+}
+
+#start:focus {
+    outline: 0;
+}
+
+#pause {
+    background-color: transparent;
+    border: 0px;
+    width: 1.8vw;
+    height: 1.8vw;
+    border-radius: 50%;
+}
+
+#pause:hover {
+    background-color: #5e7280
+}
+
+#pause:focus {
+    outline: 0;
+}
+
+#pause:disabled {
+    background-color: #dbdbdb
+}
+
+#stop {
+    background-color: transparent;
+    border: 0px;
+    width: 1.8vw;
+    height: 1.8vw;
+    border-radius: 50%;
+}
+
+#stop:hover {
+    background-color: #5e7280
+}
+
+#stop:focus {
+    outline: 0;
+}
+
+#stop:disabled {
+    background-color: #f3f1eb
+}
+
+#loopBtn {
+    display: none;
+}
+
+.slider {
+    width: 1.8vw;
+    height: 1.8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: rgb(191, 219, 245);
+}
+
+input:disabled+.slider {
+    background: #bbbbbb;
+}
+
+.slider .img {
+    position: relative;
+    height: 1.3vw;
+    width: 1.3vw;
+    vertical-align: middle;
+}
+
+.label_edit1 {
+    font-size: 120%;
+    font-family: monospace;
+    font-weight: bold;
+    color: #f0e6d3;
+}
+
+#slash {
+    font-size: 130%;
+    font-weight: bold;
+    color: #f3eaea;
+}
+
+.label_edit2 {
+    font-size: 120%;
+    font-family: monospace;
+    font-weight: bold;
+    color: #f0e6d3;
+}

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>myKLA2 Detector</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/control_utils.css">
+    <script src="./js/mediapipe/camera_utils.js"></script>
+    <script src="./js/mediapipe/control_utils.js"></script>
+    <script src="./js/mediapipe/drawing_utils.js"></script>
+    <script src="./js/mediapipe/holistic.js"></script>
+
+    <script src="./js/tensorflow/tf-core.js"></script>
+    <script src="./js/tensorflow/tf-converter.js"></script>
+    <script src="./js/tensorflow/tf-backend-webgl.js"></script>
+    <script src="./js/tensorflow/face-landmarks-detection.js"></script>
+
+    <script src="./js/mustache/mustache.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/sideBar.css">
+    <link rel="stylesheet" href="./css/loadingSpinner.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="../account/loginControl.js"></script>
+
+</head>
+
+<body>
+
+
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div id="colorSelect">
+            <div class="sideTitle"><b>Theme:</b></div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="colorChange(0)" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Light Brown Theme
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="colorChange(1)">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Light Pink Theme
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onclick="colorChange(2)">
+                <label class="form-check-label" for="flexRadioDefault3">
+                    Grey Theme
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" onclick="colorChange(3)">
+                <label class="form-check-label" for="flexRadioDefault4">
+                    Dark Brown Theme
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" onclick="colorChange(4)">
+                <label class="form-check-label" for="flexRadioDefault5">
+                    Dark Blue Theme
+                </label>
+            </div>
+        </div>
+        <div id="layoutsSelect">
+            <div class="sideTitle"><b>Layouts:</b></div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefaultTwo" id="layouts2" onclick="layoutsChange(2)" checked>
+                <label class="form-check-label" for="layouts2">
+                    Character
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefaultTwo" id="layouts1" onclick="layoutsChange(1)">
+                <label class="form-check-label" for="layouts1">
+                    Tiled
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefaultTwo" id="layouts0" onclick="layoutsChange(0)">
+                <label class="form-check-label" for="layouts0">
+                    Webcam
+                </label>
+            </div>
+        </div>
+        <div id="distanceSelect">
+            <div class="sideTitle"><b>Recording Distance:</b></div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefaultThree" id="distance4" >
+                <label class="form-check-label" for="distance4">
+                    Extremely Short Distance (about 0.5m)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefaultThree" id="distance1" checked>
+                <label class="form-check-label" for="distance1">
+                    Short Distance (about 1.3m)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefaultThree" id="distance2">
+                <label class="form-check-label" for="distance2">
+                    Medium Distance (about 2.3m)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefaultThree" id="distance3">
+                <label class="form-check-label" for="distance3">
+                    Long Distance (about 4m)
+                </label>
+            </div>
+
+        </div>
+        <div id="backgroundSelect">
+            <div class="sideTitle"><b>Background:</b></div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefaultFour" id="back0" onclick="backChange(0)" checked>
+                <label class="form-check-label" for="back1">
+                    Light
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefaultFour" id="back1" onclick="backChange(1)">
+                <label class="form-check-label" for="back2">
+                    Dark
+                </label>
+            </div>
+        </div>
+        <div id="exampleJson">
+            <div id="downloadJsonDiv">Click here to download<br> a example JSON file.</div>
+            <button title="Export example JSON file." id="btnExport" onclick="downloadJSON()"><img src="pic/downloadJSON.png"></button>
+        </div>
+    </div>
+
+
+
+
+    <!-- topBar -->
+    <nav id="bar">
+        <div id="topbarLeft">
+            <button title="Video about detector page." id="informationBtnIntro" onclick="window.open('video/detector-intro.mp4')"><img src="pic/information intro.png"></button>
+            <label class="logo2">myKLA2 Detector<label style="font-size: 0.7vw;margin-left: 1vw;" >v20221128</label></label>
+            <div id="topbarIconArea">
+                <a href="../index.html" id="home"><img src="./pic/home.png" width="26vw" height="26vw"></a>
+                <img src="./pic/setting.png" width="21vw" height="21vw" onclick="openNav()" id="setting">
+            </div>
+        </div>
+        <div>
+            <ul id="linkBar">
+                <li><a class="part" href="../editor/index.html">Editor</a></li>
+                <li><a class="part" href="../player/index.html">Player</a></li>
+                <li><a class="part" href="https://cip.nknu.edu.tw/myLogin/form/form.html">Exit</a></li>
+            </ul>
+            <label id="icon">
+            <i class="fas fa-bars"></i>
+            </label>
+        </div>  
+    </nav>
+
+    <!-- 控制偵測面板 -->
+    <div id="detectionControl">
+        <ul id="control" style="padding-left:0px;padding-right:0px;">
+            <script type="text/template" id="toggleTemplate">
+                {{#toggles}}
+                <li class="py-3 d-flex justify-content-center">
+                    <div id={{titleId}} class="partTitle">
+                        {{partTitle}}
+                        <label class="switch">
+                          <input type="checkbox" id={{checkId}}>
+                          <span class="slider"></span>                   
+                          </label>
+                    </div>
+                </li>
+                {{/toggles}}
+            </script>
+
+        </ul>
+    </div>
+    <div class="container">
+        <!-- webcam -->
+        <!-- <video id="video" muted="true" class="input_video"></video> -->
+
+        <div class="row">
+            <canvas class="outputCanvas">
+                <!-- 偵測的劃線 -->    
+            </canvas>
+            <div id="vrmOutput">
+                <!--vrm Model canvas   setVRM.js 14-16-->
+                <div id="vrmOutputBox">
+                    <div id="buttonContainer" class="buttonContainer">
+                        <button id="recordBtn" class="btn btn-outline-light" onclick="clickRecord()"><img style="height: 3.3vw;" src="pic/record.png"></button>
+                        <button id="stopBtn" class="btn btn-outline-light" onclick="stop()" disabled="true"><img style="height: 3.3vw;" src="pic/stop.png"></button>
+                    </div>
+                    <div id="alertPanel">Please stand properly and do not do other actions when detecting the distance.</div>
+                </div>
+            </div>
+
+            <div id="loading" class="loading">
+                <div class="spinner" id="spinner"></div>
+                <div class="message" id="message">
+                    Loading
+                </div>                    
+                
+            </div>
+            
+        </div>
+
+    </div>
+    <div class="control-panel" style="display:none">
+
+    </div>
+
+
+    <!-- render view -->
+    <script src="./js/render.js"></script>
+
+    <!-- partial -->
+    <script src="./js/three.js"></script>
+    <script src="./js/GLTFLoader.js"></script>
+    <script src="./js/three-vrm.js"></script>
+    <script src="./js/OrbitControls.js"></script>
+    <script src="./js/util.js"></script>
+    <script defer src="./js/VRMManager.js"></script>
+    <script src="./js/tween.umd.js"></script>
+
+    <script src="./js/mediapipeDetector.js" defer></script>
+    <script src="./js/tfDetector.js"></script>
+    <script src="./js/setCamera.js" defer></script>
+
+    <script src="./js/record.js"></script>
+    <script src="./js/detection/leg.js"></script>
+    <script src="./js/detection/armIn.js"></script>
+    <script src="./js/detection/armOut.js"></script>
+    <script src="./js/detection/spine.js"></script>
+    <script src="./js/detection/hand.js"></script>
+    <script src="./js/detection/finger.js"></script>
+    <script src="./js/detection/head.js"></script>
+    <script src="./js/detection/mouth.js"></script>
+    <script src="./js/detection/eye.js"></script>
+    <script src="./js/detection/hipsPosition.js"></script>
+
+    <script src="./js/sideBar.js"></script>
+    <script src="./js/layouts.js"></script>
+    <script src="./js/setVRM.js"></script>
+
+    
+    <script src="./js/color.js"></script>
+
+    <script src="./js/userZDistance.js"></script>
+
+    <!-- <script src="./js/holistic_solution_packed_assets_loader.js"></script>
+  <script src="./js/holistic_solution_simd_wasm_bin.js"></script>
+  <script src="./js/holistic_solution_simd_wasm_bin.wasm"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+.informationAreaAction {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 999;
+    margin-right: 0.4vw;
+}
+
+.informationBtn:hover+.informationTextAction {
+    display: block;
+}
+
+.informationTextAction {
+    display: none;
+    background-color: #fffefe;
+    color: #748999;
+    border: 1.5px solid #9cacc4;
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-size: 1.07vw;
+    position: absolute;
+    top: 72vh;
+    width: 27vw;
+    height: 4.5vw;
+    text-align: justify;
+}
+
+.informationBtn {
+    border: 0px;
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background-color: transparent;
+    /*為了讓btn img置中*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.4vw;
+}

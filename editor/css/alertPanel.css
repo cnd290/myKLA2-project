@@ -1,0 +1,39 @@
+#alertPanel {
+    margin-top: 70px;
+    font-size: small;
+    color: black;
+    display: flex;
+    height: 40px;
+    width: 600px;
+    align-items: center;
+}
+
+#alertPanel button {
+    border-radius: 10%;
+    padding: 5px 10px;
+}
+
+#alertContent {
+    color: #9dadc2;
+    font-size: 16.2px;
+    display: inline-block;
+    visibility: hidden;
+    white-space: nowrap;
+}
+
+#confirmBtn {
+    display: none;
+    margin-left: 5%;
+    color: #6c86a8;
+    border: 0px solid #6c86a8;
+    background-color: #E6D8BB;
+}
+
+#cancel {
+    display: inline-block;
+    visibility: hidden;
+    margin-left: 4%;
+    color: #6c86a8;
+    border: 0px solid #6c86a8;
+    background-color: #E6D8BB;
+}

@@ -1,0 +1,237 @@
+#bar {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    background: #83a7c0;
+    z-index: 99999;
+}
+
+label.logo2 {
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    padding-left: 50px;
+    padding-right: 20px;
+    line-height: 50px;
+}
+
+#linkBar {
+    float: right;
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+}
+
+#linkBar li {
+    display: inline-block;
+    margin: 0 8px;
+    /* line-height: 50px; */
+}
+
+.part {
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    padding: 7px 10px;
+    border-radius: 3px;
+    
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: lightblue;
+}
+
+.part.active,
+.part:hover {
+    border: 1px solid #fff;
+    transition: 0.5s;
+}
+
+#icon {
+    color: #fff;
+    font-size: 18px;
+    line-height: 50px;
+    float: right;
+    margin-right: 25px;
+    cursor: pointer;
+    display: none;
+}
+
+body {
+    bottom: 0;
+    /* font-family: "Titillium Web", sans-serif; */
+    font-family: 'Balsamiq Sans', cursive;
+    color: white;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: 0px 0px;
+    background-color: white;
+}
+
+
+#title{
+    /* color:#f6bd60; */
+    margin-right: 4vw;
+}
+
+.home{
+    min-height: 100vh;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#computer{
+    margin-left: 4vw;
+}
+
+#projectName{
+    /* background: linear-gradient(to top, #3a1c71, #d76d77, #ffaf7b);
+    background: -webkit-linear-gradient(to top, #3a1c71, #d76d77, #ffaf7b); */
+    background: linear-gradient( #6d86b3  30%, #a2d2ff 100%);
+    background: -webkit-linear-gradient( #6d86b3 30%, #a2d2ff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.aboutDetector{
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+}
+
+.aboutDetector .content{
+    display:flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    text-align:justify;
+}
+
+.detail{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.detail .content{
+  margin-left:5vw; 
+  text-align:justify;
+  line-height: 30px;
+  
+}
+
+.row{
+    width: 17vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.aboutEditor{
+    min-height: 100vh;
+    width: 100%;
+    background-image: url('../pic/back.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    
+}
+
+#editContent{
+    display:flex;
+    align-items: center;
+    text-align:justify;
+    flex-direction: column;
+}
+
+.warning{
+    min-height: 175vh;
+    width: 100%;
+    background: linear-gradient( #ffffff  0%, #e6dcd5 100%)
+    /* background: #e6dcd5; */
+}
+
+.situation{
+    display:flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    text-align:justify;
+}
+
+.situation p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#warn{
+    /* background: linear-gradient(to top, #3a1c71, #d76d77, #ffaf7b);
+    background: -webkit-linear-gradient(to top, #3a1c71, #d76d77, #ffaf7b); */
+    background: linear-gradient( #FF5F6D  40%, #FFC371 100%);
+    background: -webkit-linear-gradient( #FF5F6D 40%, #FFC371 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+#warnContent{
+    display:flex;
+    justify-content: center;
+    text-align:justify;
+}
+
+.playerContent{
+    margin-left:5vw; 
+    text-align:justify;
+}
+
+#player{
+    background: linear-gradient( #6d86b3  30%, #a2d2ff 100%);
+    background: -webkit-linear-gradient( #6d86b3 30%, #a2d2ff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin:0;
+}
+
+.final{
+    min-height: 100vh;
+    width: 100%;
+    /* background: linear-gradient(-20deg, #dcedff 0%, #fef4ff 80%); */
+    background: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );
+}
+
+.final .content{
+    display:flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    text-align:justify;
+}
+
+.aboutPlayer{
+    min-height: 100vh;
+    width: 100%;
+    background-image: url('../pic/back2.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    
+}
+
+#playerTitle {
+    color: #ffd67f;
+    font-size:3vw;
+    padding:10vh 0 0 0;
+    text-align: center;
+    text-shadow: 0.08em 0.08em 0 #a08650;
+}

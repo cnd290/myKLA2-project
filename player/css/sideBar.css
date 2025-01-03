@@ -1,0 +1,159 @@
+
+.sideBar {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 100000;
+    /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #6A7485;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidebar */
+    padding-top: 10vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* The sidebar links */
+
+.sideBar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+
+.sideBar a:hover {
+    color: #f1f1f1;
+}
+
+
+.sideBar .closebtn {
+    position: absolute;
+    top: 0;
+    left: 13vw;
+    font-size: 36px;
+    margin-left: 1vw;
+}
+
+.fileListInner {
+    border-radius: 5px;
+    position: relative;
+    width: 17vw;
+    height: 75%;
+    background-color: transparent;
+    border: 2px solid #808a9c;
+    overflow: hidden;
+    margin-top: 2vh;
+    overflow-y: overlay;
+}
+
+#files {
+    display: none;
+}
+
+#fileList {
+    position: absolute;
+    top: 0.5%;
+    left: 0%;
+    width: 16vw;
+    border-collapse: collapse;
+}
+
+
+#filelist td {
+    text-align: left;
+} 
+
+.fileButton {
+    color: white;
+    border: 0px;
+    border-radius: 0.5vw;
+    background-color: #6A7485;
+    width: 16.5vw;
+    height: 1.85vw;
+    text-align: left;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fileButton:hover {
+    background-color: #7d8aa0;
+}
+
+.fileButton:focus {
+    outline: 0;
+}
+
+#deleteJSON {
+    padding: 7px;
+    border-radius: 50%;
+    border: 0px solid #6c86a8;
+    background-color: #a3c2df;
+    width: 3.3vw;
+    height: 3.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#deleteJSON:hover {
+    background-color: #acacac;
+    border: 0px solid #bababa;
+}
+
+
+#deleteJSON:focus {
+    outline: 0;
+}
+
+#deleteJSON img {
+    width: 78%;
+    height: 91%;
+}
+
+#uploadJSON {
+    padding: 7px;
+    border-radius: 50%;
+    border: 0px solid #6c86a8;
+    background-color: #a3c2df;
+    width: 3.3vw;
+    height: 3.3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#uploadJSON:hover {
+    background-color: #acacac;
+    border: 0px solid #bababa;
+}
+
+#uploadJSON img{
+    margin-bottom: 1vh;
+    width: 110%; 
+    height: 110%;
+}
+
+@media screen and (max-height: 450px) {
+    .sideBar {
+        padding-top: 15px;
+    }
+    .sideBar a {
+        font-size: 18px;
+    }
+}

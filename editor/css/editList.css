@@ -1,0 +1,260 @@
+.editListWhitePart {
+    /*因為已經display: none 所以這裡不能寫display: flex  -> flex寫在edit.js互相轉換時 (display: flex)*/
+    border-radius: 12px;
+    width: 92%;
+    height: 94%;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+
+#editListUp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+#selectInputWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 1.2vw;
+    gap: 1vh 0;
+}
+
+#selectorAndInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.6vh;
+}
+
+#bodySelect {
+    /* position: relative;
+    top: 1%;
+    left: -4%; */
+    width: 170px;
+}
+
+#inputSpecialTitle {
+    width: 170px;
+    height: 23px;
+}
+
+#inputSpecialTitle::placeholder {
+    color: rgb(191, 190, 190);
+    font-size: 13px;
+}
+
+#editListButtonWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 0.7vw;
+}
+
+#btnMark {
+    color: #f1f4f7;
+    border: 0px;
+    background-color: #9cb0bd;
+    padding: 3px;
+    border: 2px solid #9cb0bd;
+    width: 2.5vw;
+    height: 2.5vw;
+    /* position: relative;
+    left: 68%;
+    top: 2.5%; */
+    border-radius: 20%;
+    box-shadow: 0 2px #7890a0;
+}
+
+#btnMark:hover {
+    background-color: #bababa;
+    border: 2px solid #bababa;
+    box-shadow: 0 2px #919191;
+}
+
+#btnMark:active {
+    background-color: #bababa;
+    box-shadow: 0 0px #919191;
+    transform: translateY(3px);
+}
+
+#btnMark:focus {
+    outline: 0;
+}
+
+#btnMark img {
+    width: 1.5vw;
+}
+
+#deleteEdit {
+    color: #f1f4f7;
+    border: 0px;
+    background-color: #9cb0bd;
+    padding: 3px;
+    border: 2px solid #9cb0bd;
+    width: 2.5vw;
+    height: 2.5vw;
+    /* position: relative;
+    left: 15%;
+    top: 1.2%; */
+    border-radius: 20%;
+    box-shadow: 0 2px #7890a0;
+}
+
+#deleteEdit:hover {
+    background-color: #bababa;
+    border: 2px solid #bababa;
+    box-shadow: 0 2px #919191;
+}
+
+#deleteEdit:active {
+    background-color: #bababa;
+    box-shadow: 0 0px #919191;
+    transform: translateY(3px);
+}
+
+#deleteEdit:focus {
+    outline: 0;
+}
+
+#deleteEdit img {
+    width: 80%;
+    height: 80%;
+}
+
+.editListInner {
+    border-radius: 5px;
+    /* position: relative;
+    left: 5%;
+    top: 3%; */
+    width: 22vw;
+    height: 47vh;
+    background-color: #eeeded;
+    /*#f9f2f2*/
+    border: 2px solid #cfc0c0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    overflow-y: overlay;
+}
+
+
+/*table區域*/
+
+#editList {
+    width: 21.2vw;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+}
+
+#editList td {
+    /* word-wrap: break-word;
+    table-layout: fixed;*/
+    width: 20vw;
+    text-align: left;
+    /* border: 1px solid rgb(173, 158, 147); */
+}
+
+#editList summary {
+    display:flex;
+    white-space: nowrap;
+}
+
+#editList details {
+    color: #716e6c;
+    /*為了讓summary字本身靠右*/
+    /*但不在這裡加margin-left或padding-left*/
+    /*=>(因為會讓background左邊空一格)*/
+    text-indent: 7%;
+    width: 24.25vw;
+    
+}
+
+.editListButton {
+    color: #838180;
+    border: 0px;
+    padding: 2px 2px 4px 25px;
+    /*上右下左*/
+    background-color: #eeeded;
+    width: 24.25vw;
+    text-align: left;
+    font-size: 14px;
+    /* font-family: monospace; */
+    white-space: nowrap;
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+}
+
+.editListButton:hover {
+    background-color: #e4e1e1;
+}
+
+.editListButton:focus {
+    outline: 0;
+}
+
+#editListBottom {
+    width: 20vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#infoNExportStatusWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#exportStatus {
+    color: #9cb0bd;
+    margin: 16px 10px;
+}
+
+#exportStatus img {
+    width: 20px;
+    margin-left: 7px;
+    display: none;
+}
+
+#btnExport {
+    color: #f1f4f7;
+    border: 0px;
+    background-color: #9cb0bd;
+    padding: 3px 3px 4px 4px;
+    border: 2px solid #9cb0bd;
+    width: 3.3vw;
+    height: 3.3vw;
+    /*為了讓button裡面的圖片置中*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 5px #7890a0;
+}
+
+#btnExport:hover {
+    background-color: #bababa;
+    border: 2px solid #bababa;
+    box-shadow: 0 5px #919191;
+}
+
+#btnExport:active {
+    background-color: #bababa;
+    box-shadow: 0 3px #919191;
+    transform: translateY(3px);
+}
+
+#btnExport:focus {
+    outline: 0;
+}
+
+#btnExport img {
+    width: 3.5vw;
+    height: 6vh;
+    margin: 0.65vh 0 0 0.14vw;
+}

@@ -1,0 +1,150 @@
+.fileListWhitePart {
+    border-radius: 12px;
+    width: 24vw;
+    height: 94%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fileListInner {
+    border-radius: 5px;
+    margin-top: 2.5vh;
+    width: 22vw;
+    height: 57vh;
+    background-color: #eeeded;
+    /*#f9f2f2*/
+    border: 2px solid #cfc0c0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    overflow-y:overlay;
+}
+
+#filelist {
+    display:flex;
+}
+
+#fileBtnArea {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 23vw;
+    padding-top: 1.4vh;
+    gap: 20px;
+}
+
+#deleteFileBtn {
+    color: #f1f4f7;
+    border: 0px;
+    background-color: #9cb0bd;
+    padding: 3px;
+    border: 2px solid #9cb0bd;
+    width: 3.3vw;
+    height: 3.3vw;
+    /* position: relative;
+    left: 43%;
+    top: 81.3%; */
+    border-radius: 50%;
+    box-shadow: 0 5px #7890a0;
+}
+
+#deleteFileBtn:hover {
+    background-color: #bababa;
+    border: 2px solid #bababa;
+    box-shadow: 0 5px #919191;
+}
+
+#deleteFileBtn:active {
+    background-color: #bababa;
+    box-shadow: 0 3px #919191;
+    transform: translateY(3px);
+}
+
+#deleteFileBtn:focus {
+    outline: 0;
+}
+
+#deleteFileBtn img {
+    width: 78%;
+    height: 91%;
+}
+
+#importFileBtn {
+    color: #f1f4f7;
+    border: 0px;
+    background-color: #9cb0bd;
+    padding: 3.5px;
+    border: 2px solid #9cb0bd;
+    width: 3.3vw;
+    height: 3.3vw;
+    /* position: relative; */
+    /* left: 80%;
+    top: 86%; */
+    border-radius: 50%;
+    box-shadow: 0 5px #7890a0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#importFileBtn:hover {
+    background-color: #bababa;
+    border: 2px solid #bababa;
+    box-shadow: 0 5px #919191;
+}
+
+#importFileBtn:active {
+    background-color: #bababa;
+    box-shadow: 0 3px #919191;
+    transform: translateY(3px);
+}
+
+#importFileBtn:focus {
+    outline: 0;
+}
+
+#importFileBtn img {
+    width: 4vw;
+    height: 6.5vh;
+    margin: 0.5vh 0 0 0.2vw;
+}
+
+/*為了不讓file upload的原本樣子顯示出來*/
+
+#files {
+    display: none;
+}
+
+.fileButton {
+    color: #838180;
+    border: 0px;
+    padding: 2px 2px 2px 15px;
+    background-color: #eeeded;
+    width: 22.25vw;
+    height: 1.85vw;
+    text-align: left;
+    font-size: 14px;
+    /* font-family: monospace; */
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.fileButton:hover {
+    background-color: #e4e1e1;
+}
+
+.fileButton:focus {
+    outline: 0;
+}
+
+/* fileList soundList button上的字 */
+.buttonText {
+    width: 17.5vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
+}

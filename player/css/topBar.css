@@ -1,0 +1,177 @@
+/* #bar {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    background: #4B6587;
+    z-index: 99999;
+}
+
+label.logo2 {
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    padding-left: 50px;
+    padding-right: 20px;
+    line-height: 50px;
+}
+
+#home {
+    position: relative;
+    margin-right: 5px;
+    bottom: 5%;
+}
+
+
+
+#linkBar {
+    float: right;
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+}
+
+#linkBar li {
+    display: inline-block;
+    margin: 0 8px;
+    line-height: 50px;
+}
+
+.part {
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    padding: 7px 10px;
+    border-radius: 3px;
+}
+
+.part.active,
+.part:hover {
+    border: 1px solid #fff;
+    transition: 0.5s;
+}
+
+#icon {
+    color: #fff;
+    font-size: 18px;
+    line-height: 50px;
+    float: right;
+    margin-right: 25px;
+    cursor: pointer;
+    display: none;
+}
+
+#linkBar a {
+    color: white;
+    text-decoration: none;
+}
+
+#linkBar a:hover {
+    color: lightblue;
+} */
+
+/* top bar */
+#bar {
+    position: fixed;
+    height: 50px;
+    background: #4B6587;
+    z-index: 99999;
+    display: flex; 
+    width: 100vw; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.part {
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    padding: 7px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.part.active,
+.part:hover {
+    border: 1px solid #fff;
+    color: lightblue;
+    transition: 0.5s;
+}
+
+label.logo2 {
+    font-size: 1.5vw;
+    font-weight: 500;
+    color: #fff;
+    line-height: 50px;
+}
+
+#topbarLeft{
+    display: flex; 
+    width: 35vw; 
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1vh;
+    margin-left: 2vw;
+}
+
+#informationBtnIntro {
+    width: 1.4vw;
+    height: 1.4vw;
+
+    border: 0px;
+    border-radius: 50%;
+    background-color: transparent;
+    /*為了讓btn img置中*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#informationBtnIntro:hover {
+    background-color: #77858f;
+    height: 1.4vw;
+}
+
+#informationBtnIntro img {
+    height: 1.4vw;
+}
+
+#topbarIconArea{
+    display: flex;
+    width: 16vw; 
+    justify-content: space-between;
+    align-items: center;
+    gap:0.5vw;
+}
+
+#linkBar {
+    float: right;
+    margin-right: 25px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+#linkBar li {
+    display: inline-block;
+    margin: 0 8px;
+}
+
+#icon {
+    color: #fff;
+    font-size: 18px;
+    line-height: 50px;
+    float: right;
+    margin-right: 25px;
+    cursor: pointer;
+    display: none;
+}
+
+#folder {
+    position: relative;
+    margin-right: 10px;
+    bottom: 5%;
+    width: 20px;
+    height: 25px;
+}

@@ -1,0 +1,232 @@
+/*----------------------soundList----------------*/
+.soundListWhitePart {
+    /*因為已經display: none 所以這裡不能寫display: flex  -> flex寫在edit.js互相轉換時 (display: flex)*/
+    border-radius: 12px;
+    width: 92%;
+    height: 94%;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+
+.soundListInner {
+    border-radius: 5px;
+    margin-top: 2.5vh;
+    width: 22vw;
+    height: 57vh;
+    background-color: #eeeded;
+    /*#f9f2f2*/
+    border: 2px solid #cfc0c0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    overflow-y:overlay;
+}
+
+#soundList {
+    width: 22vw;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+    display:block;
+}
+
+#soundHeader {
+    padding: 0 1.3vw;
+    width: 22vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e4e1e1;
+    color: #838180;
+}
+
+#soundHeaderPlay {
+    display: flex;
+    gap: 0.5vw;
+}
+
+#soundBtnArea {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 20vw;
+    padding-top: 1.4vh;
+    gap: 1.6vw;
+}
+
+#soundLoader {
+    display: none;
+}
+
+.mp3Button {
+    color: #f1f4f7;
+    border: 0px;
+    background-color: #9cb0bd;
+    padding: 3px 3px 4px 4px;
+    border: 2px solid #9cb0bd;
+    width: 3.3vw;
+    height: 3.3vw;
+    /*為了讓button裡面的圖片置中*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 5px #7890a0;
+}
+
+.mp3Button:hover {
+    background-color: #bababa;
+    border: 2px solid #bababa;
+    box-shadow: 0 5px #919191;
+}
+
+.mp3Button:active {
+    background-color: #bababa;
+    box-shadow: 0 3px #919191;
+    transform: translateY(3px);
+}
+
+.mp3Button:focus {
+    outline: 0;
+}
+
+.mp3Button img {
+    width: 3.5vw;
+    height: 6vh;
+    margin: 0.65vh 0 0 0.14vw;
+}
+
+.soundButton {
+    color: #838180;
+    border: 0px;
+    padding: 2px 2px 2px 15px;
+    background-color: #eeeded;
+    width: 21.7vw;
+    height: 1.85vw;
+    /* text-align: left; */
+    font-size: 14px;
+    /* font-family: monospace; */
+    white-space: nowrap;
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.soundButton:hover {
+    background-color: #e4e1e1;
+}
+
+.soundButtonDiv {
+    margin-right: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* From uiverse.io */
+
+.cbx {
+    position: relative;
+    /* top: 1px; */
+    width: 1.4vw;
+    height: 3vh;
+    border: 1.5px solid #ffffff;
+    border-radius: 5px;
+    /* vertical-align: middle; */
+    transition: background 0.1s ease;
+    cursor: pointer;
+    display: block;
+}
+
+.cbx:after {
+    content: '';
+    position: absolute;
+    /* top: 0px;  */
+    left: 3.5px;
+    width: 7px;
+    height: 12px;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    /* border: 3px solid #636975; */
+    border-right: 2px solid rgb(255, 255, 255);
+    border-bottom: 2px solid #fff;
+    transition: all 0.3s ease;
+    transition-delay: 0.15s;
+}
+
+.soundButtonCheckBox:checked~.cbx {
+    border-color: transparent;
+    background: #6a85b6;
+    animation: jelly 0.6s ease;
+}
+
+.soundButtonCheckBox:checked~.cbx:after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+}
+
+@keyframes jelly {
+    from {
+        transform: scale(1, 1);
+    }
+    30% {
+        transform: scale(1.25, 0.75);
+    }
+    40% {
+        transform: scale(0.75, 1.25);
+    }
+    50% {
+        transform: scale(1.15, 0.85);
+    }
+    65% {
+        transform: scale(0.95, 1.05);
+    }
+    75% {
+        transform: scale(1.05, 0.95);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+
+.soundButtonCheckBox {
+    display: none !important;
+}
+
+
+
+/* #btnMp3Export {
+    color: #f1f4f7;
+    border: 0px;
+    background-color: #9cb0bd;
+    padding: 3px 3px 4px 4px;
+    border: 2px solid #9cb0bd;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 5px #7890a0;
+}
+
+#btnMp3Export:hover {
+    background-color: #bababa;
+    border: 2px solid #bababa;
+    box-shadow: 0 5px #919191;
+}
+
+#btnMp3Export:active {
+    background-color: #bababa;
+    box-shadow: 0 3px #919191;
+    transform: translateY(3px);
+}
+
+#btnMp3Export:focus {
+    outline: 0;
+} */

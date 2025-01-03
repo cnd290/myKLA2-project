@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myKLA2 Player</title>
+
+    <link rel="stylesheet" href="./css/control_utils.css">
+    <script src="./js/tensorflow/tf-core.js"></script>
+    <script src="./js/tensorflow/tf-converter.js"></script>
+    <script src="./js/tensorflow/tf-backend-webgl.js"></script>
+    <script src="./js/tensorflow/face-landmarks-detection.js"></script>
+
+    <script src="./js/mediapipe/camera_utils.js"></script>
+    <script src="./js/mediapipe/control_utils.js"></script>
+    <script src="./js/mediapipe/drawing_utils.js"></script>
+    <script src="./js/mediapipe/holistic.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script defer src="./js/util.js"></script>
+    <script src="../account/loginControl.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <!-- bootstrap -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+    <link href="css/col-1.css" type="text/css" rel="stylesheet">
+    <link href="css/col-2.css" type="text/css" rel="stylesheet">
+    <link href="css/information.css" type="text/css" rel="stylesheet">
+    <link href="css/topBar.css" type="text/css" rel="stylesheet">
+    <link href="css/loadingSpinner.css" type="text/css" rel="stylesheet">
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <link href="css/sideBar.css" type="text/css" rel="stylesheet">
+    <link href="css/scoreList.css" type="text/css" rel="stylesheet">
+
+    <div id="sideBar" class="sideBar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <span style="font-size: 1.5vw; color: white;"><b>File List</b></span>
+        
+        <div class="fileListInner">
+            <section>
+                <input type="file" id="files" multiple accept=".json">
+            </section>
+            <section>
+                <table id="filelist" style="display:none;"></table>
+            </section>
+        </div>
+
+        <div style="display: flex; align-items: center; width:17vw; justify-content: flex-end; padding-top: 20px;gap:20px;">
+            <div>
+                <div style="color:white;">Character:</div>
+                <select id="vrmSelect" onchange="vrmChange(this.selectedIndex)">
+                    <option id="Girl01">Girl-1</option>
+                    <option id="Girl02">Girl-2</option>
+                    <option id="Boy01">Boy-1</option>
+                    <option id="Boy02">Boy-2</option>
+                </select>
+            </div>
+            
+            <button id="deleteJSON" onclick="deleteData()" disabled><img src="img_Reference/delete_lighter.png"></button>
+            <label for="files" id="uploadJSON"><img src="img_Reference/upload.png"></label>
+        </div>
+    </div>
+    <!-- Top bar -->
+    <nav id="bar">
+        <div id="topbarLeft">
+            <button title="Video about player page." id="informationBtnIntro" onclick="window.open('video/player-intro.mp4')"><img src="img_Reference/information.png"></button>
+            <label class="logo2">myKLA2 Player<label style="font-size: 0.7vw;margin-left: 1vw;" >v20221128</label></label>
+            <div id="topbarIconArea">
+                <a href="../index.html" id="home"><img src="./img_Reference/home.png" width="26vw" height="26vw"></a>
+                <img src="img_Reference/folder.png" onclick="openNav()" id="folder">
+                <select id="colorSelect" onchange="colorChange(this.selectedIndex)">
+                    <option class="op" id="0">Light Brown Theme</option>
+                    <option class="op" id="1">Light Pink Theme</option>
+                    <option class="op" id="2">Grey Theme</option>
+                    <option class="op" id="3">Dark Brown Theme</option>
+                    <option class="op" id="4">Dark Blue Theme</option>
+                </select>
+                <select id="backSelect" onchange="backChange(this.selectedIndex)">
+                    <option class="op" id="10">Light</option>
+                    <option class="op" id="11">Dark</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <ul id="linkBar">
+                <li><a class="part" href="../detector/index.html">Detector</a></li>
+                <li><a class="part" href="../editor/index.html">Editor</a></li>
+                <li><a class="part" href="https://cip.nknu.edu.tw/myLogin/form/form.html">Exit</a></li>
+            </ul>
+            <label id="icon">
+                <i class="fas fa-bars"></i>
+            </label>
+        </div>  
+    </nav>
+    <!-- Top bar End-->
+    <div id="loadingOutside">
+        <div id="loading" class="loading">
+            <div class="spinner" id="spinner"></div>
+            <div class="message" id="message">
+                Loading
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="col-1">
+            <div id="alertPanel">
+
+                <span id="alertContent"><br><br></span>
+                <button class="confirm" id="confirmBtn" onclick="disappearAlertPanel()">Confirm</button>
+                <button id="cancel" onclick="disappearAlertPanel()">Cancel</button>
+            </div>
+            <div id="outsideFrame">
+                <div id="KLA">
+                    <div id="notice">Tip : You can also upload by dragging a json file to this block.</div>
+                    <div id="noticeKLA">Wait for loading character...</div>
+                    <!-- 顯示321及成績 -->
+                    <div id="num"></div>
+                </div>
+
+                <div id="toolBar">
+                    <div id="playerBtnContainer">
+                        <button id="start" onclick="clickExecute()"><img src="img_Reference/start2.png"></button>
+                        <button id="pause" onclick="pause()" disabled><img src="img_Reference/pause2.png"></button>
+                        <button id="stop" onclick="stop()"><img src="img_Reference/stop2.png"></button>
+                        <label class="switch">
+                            <input type="checkbox" id="loopBtn">
+                            <span class="slider"><img src="img_Reference/refresh.png" class="img" id="imgRefresh"><img src="img_Reference/no.png" class="img" id="imgNo" style="display:none;"></span>
+                        </label>
+                        <div class="informationAreaAction">
+                            <button class="informationBtn"><img src="img_Reference/information.png"></button>
+                            <div class="informationTextAction">The user must make mirrored actions according to the virtual character.</div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="label_edit1" id="minute">00</label>
+                        <label class="label_edit1" id="colon">:</label>
+                        <label class="label_edit1" id="second">00.00</label>
+                        <label id="slash">/</label>
+                        <label class="label_edit2" id="lengthMin">00</label>
+                        <label class="label_edit2" id="lengthColon">:</label>
+                        <label class="label_edit2" id="lengthSec">00.00</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <button title="" id="warning">
+                <img width="30vw"; src="img_Reference/warning.png">
+            </button>
+            <div id="col-2Inner">
+                <!-- 顯示GO或動作名稱 -->
+                <div id="countDown">
+                    <div id="actionNamePanel">
+                        <div id="actionNameText"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <!-- webcam -->
+                    <!-- <video id="video" muted="true" class="input_video"></video> -->
+    
+                    <canvas class="outputCanvas">
+                        <!-- 偵測的劃線 -->    
+                    </canvas>
+                </div>
+            </div>
+            
+            <div class="control-panel" style="display:none">
+
+            </div>
+        </div>
+    </div>
+    <!-- scoreList -->
+    <div id="scoreList" style="display: none;">
+        <a href="javascript:void(0)" id="close" onclick="closeScore()" style="visibility: hidden;">×</a>
+        <header id="finalScoreHeader"><b>Final Score</b></header>
+        <div class="score">
+            <div id="scorePanel">
+                <div class="scoreText">Total Score :</div>
+                <div id="finalScore"></div>
+                <div id="levelScore">
+                    <table id="scoreTable" class="scoreText">
+                        <tr>
+                            <td class="scoreName">Excellent :</td>
+                            <td id="Excellent" class="scoreNum"></td>
+                        </tr>
+                        <tr>
+                            <td class="scoreName">Good :</td>
+                            <td id="Good" class="scoreNum"></td>
+                        </tr>
+                        <tr>
+                            <td class="scoreName">OK :</td>
+                            <td id="OK" class="scoreNum"></td>
+                        </tr>
+                        <tr>
+                            <td class="scoreName">Bad :</td>
+                            <td id="Bad" class="scoreNum"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="resultPanel">
+                <div id="resultOutterBackground">
+                    <h2 class="resultText">Result</h2>
+                    <div id="resultInnerBackground">
+                        <div id="detailList"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="scoreListBtn" style="height: 57vh;">
+                <button title="Download PDF of results." id="downloadPDFBtn" onclick="exportTable(tableContentArr)"><img src="./img_Reference/downloadPDF.png"></button>
+                <button title="Download action video of user." id="downloadVideo" onclick="exportVideo()"><img src="./img_Reference/downloadVideo.png"></button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/three.js"></script>
+    <script src="js/three-vrm.js"></script>
+    <script src="js/GLTFLoader.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/VRMManager.js"></script>
+    <script src="js/tween.umd.js"></script>
+    <script src="./js/recordVideo.js"></script>
+    <script defer src="./js/compare.js"></script>
+
+    <script defer src="./js/tfDetector.js"></script>
+    <script defer src="js/userZDistance.js"></script>
+    <script defer src="js/setVRMScene.js"></script>
+    <script defer src="js/mediapipeDetector.js"></script>
+    <script defer src="./js/setCamera.js" defer></script>
+
+    <script defer src="js/color.js"></script>
+    <script defer src="js/fileLoad.js"></script>
+    <script defer src="js/countDown.js"></script>
+    <script defer src="js/undetectedAnimation.js"></script>
+    <script>
+       // const serverUrl = "http://localhost";
+        const serverUrl = "https://cip.nknu.edu.tw";
+    </script>
+
+    <script src="./js/detection/leg.js"></script>
+    <script src="./js/detection/armIn.js"></script>
+    <script src="./js/detection/armOut.js"></script>
+    <script src="./js/detection/spine.js"></script>
+    <script src="./js/detection/hand.js"></script>
+    <script src="./js/detection/finger.js"></script>
+    <script src="./js/detection/head.js"></script>
+    <script src="./js/detection/mouth.js"></script>
+    <script src="./js/detection/eye.js"></script>
+    <script src="./js/calcScore.js"></script>
+    <script src="./js/scoreList.js"></script>
+    <script src="./js/vrmChange.js"></script>
+
+    <script src="js/sideBar.js" defer="true"></script>
+    <script src="./js/base64ToAudio.js"></script>
+    <script src="./js/loadingSpinner.js"></script>
+
+    
+    <script defer src="js/animationVRM.js"></script>
+    <script defer src="js/setVRMPosition.js"></script>
+    <script defer src="js/buttonVRM.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+.col-2 {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    margin-top: 12.5vh;
+}
+
+/* 顯示go跟動作名稱區域 */
+
+#warning {
+    visibility: hidden;
+    width: 3vw;
+    background-color: transparent;
+    border: 0px;
+    animation: animation_undetected 1s linear;
+    animation-iteration-count: infinite;
+    margin: 2vh 0 1vh 0;
+}
+
+.undetectedText {
+    animation: none;
+    font-size: 30px;
+}
+
+@keyframes animation_undetected {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.1;
+    }
+}
+
+#col-2Inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 67vh;
+}
+
+#countDown {
+    height: 30vh;
+    width: 20vw;
+    background-color: #E6D8BB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#actionNamePanel {
+    display: flex;
+    height: 21vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#actionNameText {
+    text-align: center;
+    color: #6c86a8;
+}
+
+.go {
+    animation: animation_go 1s linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes animation_go {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.1;
+    }
+}
+
+/* 顯示使用者畫面區域 */
+
+/* webcam */
+.outputCanvas {
+    display: block;
+    left: 0;
+    top: 0;
+    width: 20vw;
+    height: 31vh;
+}

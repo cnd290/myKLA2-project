@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myKLA2</title>
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <link href="./homepage/css/style.css" type="text/css" rel="stylesheet">
+    <!-- <script src="../account/loginControl.js"></script> -->
+
+</head>
+
+<body>
+
+    <nav id="bar">
+        <label class="logo2">myKLA2<label style="font-size: 12px;margin-left: 1vw;" >v20221103</label></label>
+
+        <ul id="linkBar">
+            <li><a class="part" href="./detector/index.html">Detector</a></li>
+            <li><a class="part" href="./editor/index.html">Editor</a></li>
+            <li><a class="part" href="./player/index.html">Player</a></li>
+            <!-- <li><a class="part" href="https://cip.nknu.edu.tw/myLogin/form/form.html">Exit</a></li> -->
+        </ul>
+
+    </nav>
+    <section class="home">
+        <div id="title">
+            <p style="font-size: 2vw; margin: 10px 0 ;color:#f6bd60;">3D Character Animation Maker</p>
+            <h1 style="font-size: 6vw; margin: 10px 0 ;" id="projectName"><b>myKLA2</b></h1>
+            <p style="font-size: 2.5vw; margin: 10px 0 ;color: #c8c5ec;">Making for Everyone ! <br> Get Started Now !</p>
+        </div>
+        <img src="./homepage/pic/computer.png" width="43%" id="computer">
+    </section>
+    <section class="aboutDetector">
+        <header style="color: #efc976; font-size:2.8vw; padding:10vh 0 8vh 0; text-align: center;text-shadow: 0.1em 0.1em 0.05em rgb(255, 255, 255);"><b>About Detector</b></header>
+        <div class="content">
+            <div>
+                <img src="./homepage/pic/pose.png" height="50vw">
+                <h1 style="color:#ADA39D;">Body Detection</h1>
+                <p style="width:25vw; color:#ADA39D; font-size:1.3vw; line-height: 31px;">You can start using body detection by the webcam. To detect, you just need to choose any part of the body that you want. No matter what you do, your virtual character will follow you to do the same action.</p>
+            </div>
+            <div>
+                <img src="./homepage/pic/camera.png" height="50vw">
+                <h1 style="color:#ADA39D;">Action Recording</h1>
+                <p style="width:25vw; color:#ADA39D; font-size:1.3vw; line-height: 31px;">Before recording, select the recording distance first. You can record only when the distance between you and the camera matches the distance you selected. When you start recording, the system will record the rotation angle of your body
+                    parts. After recording, you can export JSON files that record actions. </p>
+            </div>
+            <div>
+                <img src="./homepage/pic/layout.png" height="50vw">
+                <h1 style="color:#ADA39D;">Theme and Layouts</h1>
+                <p style="width:25vw; color:#ADA39D; font-size:1.3vw; line-height: 31px;">During detection, you can choose your favorite theme color and layout. Our system has a variety of beautiful themes for you to choose from. You can also adjust the layout size according to your needs.</p>
+            </div>
+        </div>
+    </section>
+    <section class="detail">
+        <img src="./homepage/pic/six.png" style="margin:2% 0;height:70vh;">
+        <div class="content">
+            <div class="row">
+                <img src="./homepage/pic/body.png" height="60vw">
+                <img src="./homepage/pic/face.png" height="60vw">
+                <img src="./homepage/pic/eye.png" height="60vw">
+            </div>
+            <h1 style="color: #6B66A7; font-size:2.2vw;">Many body parts are detectable</h1>
+            <p style="color: #A5A1D7; width: 38vw; font-size:1.4vw;">All parts of the human body can be detected. The part of the hand can be divided into arms, wrists and fingers. In addition, the part of the eye can also detect not only the blink, but also the direction of sight, and even the change of the
+                mouth shape can be detected.</p>
+        </div>
+    </section>
+    <section class="aboutEditor">
+        <header style="color: #6d86b3; font-size:3vw; padding:10vh 0 0 0; text-align: center;text-shadow: 0.1em 0.1em 0.05em rgb(255, 255, 255);"><b>About Editor</b></header>
+        <div id="editContent">
+            <p style="width:80vw; color:#8b7e76; font-size:1.4vw; line-height: 35px;margin-bottom: 5vh;">You can import your pre-recorded JSON file and play. During the process, you can click the buttons of pause, stop, forward five seconds, backward five seconds and loop. You can also record or upload audio files and edit them. Even you can
+                mark some actions, and then the system will pause for three seconds when the marked action is being played. In the future, when the user performs this action, it can detect whether the user has performed the corresponding action.</p>
+            <img src="./homepage/pic/editor.png" width="410vw">
+        </div>
+    </section>
+    <section class="warning">
+        <header style="font-size:3.5vw; padding:10vh 0 5px 0; text-align: center;letter-spacing:5px;" id="warn"><b>WARNING</b></header>
+        <div id="warnContent">
+            <p style="color:#9f8e82; font-size:1.3vw; margin: 0 0 3vh">Please pay attention to the following rules. </p>
+        </div>
+        <div class="situation">
+            <div>
+                <h1 style="color:#8b7e76;">Actions to Be Alerted</h1>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">★ Please play the JSON file before editing.</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">★ Please choose the file before pressing the play button.</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">★ Please notice not to import the same file. </p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">★ Please make sure to export the file that you had edited before deleting the file or leaving the website.</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">★ Please do not mark the same body part at the same time in the file.</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">★ If the JSON file that has recorded sound is marked again, the length of the sound and the animation will be different, so if you want to mark it, you may need to record the sound again.</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">★ Because the recorded sound is used to be played by the users, so the length of the sound will include the paused time of all marked time. Therefore, before you play the JSON file, please remember to press the bookmark button to synchronize
+                    the sound with the animation.</p>
+                <br>
+                <h1 style="color:#8b7e76;">The Rules of Playing</h1>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">◎ You cannot press the pause button when no file is playing.</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">◎ When the bookmark button is pressed, the animation will pause for three seconds if the time is marked, and the pause, forward five seconds and backward five seconds buttons cannot be clicked during the pause.</p>
+
+            </div>
+            <div>
+                <h1 style="color:#8b7e76;">The Rules of Editing</h1>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">◎ The left and right sides of the body parts in the dropdown menu correspond to the sides of the user.</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">◎ You can name this marked action. If you don't name it, it will be presented as untitled.</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">◎ When you edited your file, the export light will turn red, please remember to export your file to save it.</p>
+                <br>
+                <h1 style="color:#8b7e76;">The Rules of Recording and Playing Sound</h1>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">◎ During the recording process, you can decide whether to mute or not at any time, and you can also record the audio file multiple times.</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">◎ You can press the recording pause button at any time to pause the animation and recording. However, when the animation is played to the time that was marked, you can not press the recording pause button.</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">◎ You can't stop recording after you start recording sound</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">◎ During recording, the buttons for play, pause, stop, forward five seconds, backward five seconds, and loop cannot be clicked, and the bookmark button will be automatically checked and then become unclickable.</p>
+                <p style="width:42vw; color:#8b7e76; font-size:1.3vw; line-height: 5vh;">◎ When playing a JSON file, the selected audio file will be played. However, when exporting JSON file, all audio files will be exported instead of only the selected audio file. You can also click any sound file you want to export.</p>
+            </div>
+        </div>
+    </section>
+    <section class="detail">
+        <div class="playerContent">
+            <h1 style="font-size:3vw;" id="player"><b>About Player</b></h1>
+            <p style="color: #f6bd60; width: 38vw; font-size:1.4vw;margin:2vh 0;line-height: 5vh;">Import the edited JSON file, and users can play the edited file through the player. Users can import multiple files at the same time, and then select the animation that you want to watch. When the player plays to the time which was marked,
+                it will count down three seconds and show the action name. Before the countdown is over, you need to follow the virtual character to do the corresponding actions, and then you will be rated according to the accuracy of your actions.</p>
+        </div>
+        <img src="./homepage/pic/salute.png" style="height:90vh; margin:10vh 10vw 0 10vw">
+    </section>
+    <section class="aboutPlayer">
+        <header id="playerTitle"><b>The Rules of Player</b></header>
+        <div style="display: flex; flex-direction:column; margin-top: 6vh;">
+            <div style="display: flex; flex-direction: row; justify-content: center; gap: 10vw; align-items: flex-start;">
+                <div>
+                    <h1 style="color:#ADA39D;font-size:1.7vw;">Distance detection</h1>
+                    <p style="width:30vw; color:#ADA39D; font-size:1.4vw; line-height: 31px; word-wrap: break-word; text-align: justify;">Before using the player, you need to detect whether the distance between you and the camera matches the distance set in the JSON file.</p>
+                </div>
+                <div>
+                    <h1 style="color:#ADA39D;font-size:1.7vw;">About Pause Button</h1>
+                    <p style="width:30vw; color:#ADA39D; font-size:1.4vw; line-height: 31px; word-wrap: break-word; text-align: justify;">When the animation is played to the time which was marked or detecting the distance between you and the camera, you can not press the pause button.</p>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction:row; justify-content: center; gap: 10vw; align-items: flex-start;">
+                <div>
+                    <h1 style="color:#ADA39D;font-size:1.7vw;">Direction of the actions</h1>
+                    <p style="width:30vw; color:#ADA39D; font-size:1.4vw; line-height: 31px; word-wrap: break-word; text-align: justify;">During the process, the user needs to make mirrored actions according to the virtual character.</p>
+                </div>
+                <div>
+                    <h1 style="color:#ADA39D;font-size:1.7vw;">Export Files</h1>
+                    <p style="width:30vw; color:#ADA39D; font-size:1.4vw; line-height: 31px; word-wrap: break-word; text-align: justify;">The video and action results of the user will be recorded during the process. At the end, the video file and the PDF file of the results can be exported.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="final">
+        <header style="color: #8b7e76; font-size:4vw; padding:15vh 0 10vh 0; text-align: center;text-shadow: 0.1em 0.1em 0.05em rgb(255, 255, 255);"><b>Start Now</b></header>
+        <div class="content">
+            <div style="text-align: center;">
+                <a href="./detector/index.html"><img src="./homepage/pic/detector.png" width="380vw" height="200vh"></a>
+                <a href="./detector/index.html">
+                    <h1 style="color:#6d86b3;font-size: 2vw;">Detector</h1>
+                </a>
+            </div>
+            <div style="text-align: center;">
+                <a href="./editor/index.html"><img src="./homepage/pic/editor2.png" width="380vw" height="200vh"></a>
+                <a href="./editor/index.html">
+                    <h1 style="color:#6d86b3;font-size: 2vw;">Editor</h1>
+                </a>
+            </div>
+            <div style="text-align: center;">
+                <a href="./player/index.html"><img src="./homepage/pic/player.png" width="380vw" height="200vh"></a>
+                <a href="./player/index.html">
+                    <h1 style="color:#6d86b3;font-size: 2vw;">Player</h1>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="display: block; position: absolute; width: 100%; text-align: center; background: #4b5c66; color: white; line-height: 1.5; font-family: 'Poppins', sans-serif;">
+        <p style="margin: 15px;">&emsp;</p>
+        <p style="margin: 15px;"><a style="color: white" href="https://sites.google.com/mail.nknu.edu.tw/cph/home">🌏HIE Lab | Ⓖ 🚀 Ⓖ | 🛸 Ⓖ | 🚜 Ⓦ&emsp;</a></p>
+        <p style="margin: 15px;"><a style="color: white" href="https://sites.google.com/mail.nknu.edu.tw/iecnknu/%E9%A6%96%E9%A0%81"> &emsp;🌏NKNU-IEC Ⓖ Ⓕ Ⓑ</a></p>
+        <p style="margin: 15px;">© 2008-2022 Power by Po-Hsun Cheng (鄭伯壎) and Li-Wei Chen (陳立偉),</p>
+        <p style="margin: 15px;">Information Education Center, National Kaohsiung Normal University, Taiwan.</p>
+        <p style="margin: 15px;">Source: Tzu-Yin Liu (劉姿吟), Shih-Yueh Chao (趙詩越), Pin-Rong Chen (陳品蓉)</p>
+    </footer>
+
+</body>
+
+</html>

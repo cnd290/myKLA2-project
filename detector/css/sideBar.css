@@ -1,0 +1,138 @@
+/* The sidebar menu */
+
+.sidebar {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 100000;
+    /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #6A7485;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidebar */
+    padding-top: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+    gap:1vh;
+}
+
+
+/* The sidebar links */
+
+.sidebar a {
+    padding: 2vh 4.5vw;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+
+/* When you mouse over the navigation links, change their color */
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+
+/* Position and style the close button (top right corner) */
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    left: 16vw;
+    font-size: 36px;
+    margin-left: 1vw;
+}
+
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
+#main {
+    position: absolute;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+
+
+.sidebar div{
+    margin-left: 0.7vw;
+}
+
+.sideTitle{
+    letter-spacing: 1.2px;
+    font-size: 1.5vw;
+    margin-bottom:0.2vh
+}
+
+.form-check {
+    font-size: 1.15vw;
+}
+
+#exampleJson{
+    display:flex;
+}
+
+#downloadJsonDiv{
+    font-size: 1.2vw;
+    margin-right: 2vw;
+}
+
+#btnExport {
+    color: #f1f4f7;
+    border: 0px;
+    background-color: #9cb0bd;
+    padding: 3px 3px 4px 4px;
+    border: 2px solid #9cb0bd;
+    width: 3.3vw;
+    height: 3.3vw;
+    /*為了讓button裡面的圖片置中*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 5px #7890a0;
+    margin-bottom: 12vw;
+}
+
+#btnExport:hover {
+    background-color: #bababa;
+    border: 2px solid #bababa;
+    box-shadow: 0 5px #919191;
+}
+
+#btnExport:active {
+    background-color: #bababa;
+    box-shadow: 0 3px #919191;
+    transform: translateY(3px);
+}
+
+#btnExport:focus {
+    outline: 0;
+}
+
+#btnExport img {
+    width: 3.5vw;
+    height: 6vh;
+    margin: 0.65vh 0 0 0.14vw;
+}

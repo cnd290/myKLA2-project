@@ -1,0 +1,275 @@
+#scoreList {
+    z-index: 99999999;
+    position: fixed;
+    width: 80vw;
+    height: 80vh;
+    list-style-type: none;
+    top: 10vh;
+    right: 10vw;
+    background-color: #E6D8BBee;
+    border-radius: 10px
+}
+
+#close {
+    font-size: 3vw;
+    color: #ffffff;
+    margin-left: 96%;
+    visibility: hidden;
+    text-decoration: none;
+}
+
+#close:hover {
+    color: #6c86a8;
+}
+
+.closeScore {
+    animation: closeScore_ani 1s linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes closeScore_ani {
+    0% {
+        opacity: 1;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    30% {
+        opacity: 0.7;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    60% {
+        opacity: 0.4;
+    }
+    70% {
+        opacity: 0.3;
+    }
+    80% {
+        opacity: 0.2;
+    }
+    90% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+#finalScoreHeader {
+    font-size:xxx-large; 
+    top:5%; 
+    text-align: center;
+    letter-spacing:3px;
+    position: absolute;
+    width: 100%;
+    color: #4B6587;
+}
+
+.score {
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    justify-content: center;
+    top: 7%;
+}
+
+/* scoreList的左半邊 */
+
+#scorePanel {
+    width: 30vw; 
+    height: 57vh;
+    margin: 1vh 1vw 0 0;
+}
+
+.scoreText {
+    color: #6c86a8;
+    /* 2 */
+    font-size: 30px;
+}
+
+#finalScore {
+    color: #4B6587;
+    /* 1 */
+    font-size: 10vh;
+    margin: 1.5vw;
+    height: 7vh;
+}
+
+#levelScore {
+    width: 30vw;
+    height: 30vh;
+    font-size: 33px;
+}
+
+#scoreTable {
+    position: relative;
+    margin-top: 10vh;
+}
+
+#scoreTable td {
+    word-wrap: break-word;
+    table-layout: fixed;
+}
+
+.scoreName{
+    width: 200px; 
+    text-align: left; 
+    padding: 0;
+}
+
+.scoreNum {
+    text-align: right;
+    width: 50px; 
+    padding: 0;
+}
+
+/* scoreList的右半邊 */
+
+#resultPanel {
+    width: 30vw;
+    height: 57vh;
+    margin: 3vh 0 0 3vw;
+}
+
+#resultOutterBackground {
+    background-color: #F7F6F2;
+    /* 0 */
+    width: 30vw; 
+    height: 57vh;  
+    border-radius: 10px; 
+    text-align: center; 
+    display: flex; 
+    align-items: center; 
+    flex-direction: column;
+}
+
+.resultText {
+    color: #929292;
+    padding-top: 3vh;
+}
+
+#resultInnerBackground {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: #929292;
+    text-align: left;
+    align-items: center;
+    width: 27vw;
+    height: 42vh;
+    border-radius: 10px;
+    border: 0px solid #78614c;
+    overflow-y: overlay;
+    overflow-x: hidden;
+    justify-content: center;
+    padding-bottom: 2vh;
+}
+
+#detailList {
+    width: 22vw;
+    height: 38vh;
+}
+
+#resultInnerBackground details{
+    margin: 1.5vh 0;
+}
+
+#resultInnerBackground summary{
+    margin-bottom: 0.5vh;
+}
+
+#resultInnerBackground ul {
+    margin: 0;
+}
+
+#resultInnerBackground li {
+    height: 5vh;
+}
+
+#scoreListBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 3vh;
+    padding-left: 1.5vw;
+    margin-top: 3vh;
+}
+
+#scoreListBtn img{
+    width: 3.6vw;
+    height: 3.5vw;
+    margin-top: 0.5vh;
+}
+
+#downloadPDFBtn {
+    visibility: hidden;
+    color: #f1f4f7;
+    border: 0px;
+    background-color: #9cb0bd;
+    padding: 3px;
+    border: 2px solid #9cb0bd;
+    width: 3.7vw;
+    height: 3.7vw;
+    border-radius: 50%;
+    box-shadow: 0 4px #7890a0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#downloadPDFBtn:hover {
+    background-color: #bababa;
+    border: 2px solid #bababa;
+    box-shadow: 0 2px #919191;
+}
+
+#downloadPDFBtn:active {
+    background-color: #bababa;
+    box-shadow: 0 0px #919191;
+    transform: translateY(3px);
+}
+
+#downloadPDFBtn:focus {
+    outline: 0;
+}
+
+#downloadVideo {
+    visibility: hidden;
+    color: #f1f4f7;
+    border: 0px;
+    background-color: #9cb0bd;
+    padding: 3px;
+    border: 2px solid #9cb0bd;
+    width: 3.7vw;
+    height: 3.7vw;
+    border-radius: 50%;
+    box-shadow: 0 4px #7890a0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#downloadVideo:hover {
+    background-color: #bababa;
+    border: 2px solid #bababa;
+    box-shadow: 0 2px #919191;
+}
+
+#downloadVideo:active {
+    background-color: #bababa;
+    box-shadow: 0 0px #919191;
+    transform: translateY(3px);
+}
+
+#downloadVideo:focus {
+    outline: 0;
+}
+

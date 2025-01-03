@@ -1,0 +1,352 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #F7F6F2;
+    font-family: 'Balsamiq Sans', 'Microsoft JhengHei';
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    /*自動隱藏超出的文字或圖片*/
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+/*----------- col-1 ------------*/
+
+.col-1 {
+    width: 58%;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+#outsideFrame {
+    width: 96%;
+    height: 68%;
+    background-color: #9dadc2;
+    margin-top: 10px;
+}
+
+#KLA {
+    position: relative;
+    top: 2.5%;
+    right: -1.5%;
+    background-color: #dceaf5;
+    width: 97%;
+    height: 89%;
+}
+
+#vrmWindow {
+    position: absolute;
+}
+
+#notice {
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    z-index: 999;
+    font-size: 12px;
+    color: #b39d9d;
+}
+
+#noticeKLA {
+    /*若為relative 字消失後 空間往上移*/
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    z-index: 999;
+    font-size: 12px;
+    color: #b39d9d;
+}
+
+#toolBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.9vw 2vw;
+}
+
+#playerBtnContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.35vw;
+}
+
+#playerBtnContainer button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#playerBtnContainer button img {
+    height: 1.8vw;
+}
+
+#play {
+    background-color: transparent;
+    border: 0px;
+    width: 1.8vw;
+    height: 1.8vw;
+    border-radius: 50%;
+}
+
+#play:hover {
+    background-color: #5e7280
+}
+
+#play:focus {
+    outline: 0;
+}
+
+#play:disabled {
+    background-color: #dbdbdb
+}
+
+#pause {
+    background-color: transparent;
+    border: 0px;
+    width: 1.8vw;
+    height: 1.8vw;
+    border-radius: 50%;
+}
+
+#pause:hover {
+    background-color: #5e7280
+}
+
+#pause:focus {
+    outline: 0;
+}
+
+#pause:disabled {
+    background-color: #dbdbdb
+}
+
+#stop {
+    background-color: transparent;
+    border: 0px;
+    width: 1.8vw;
+    height: 1.8vw;
+    border-radius: 50%;
+}
+
+#stop:hover {
+    background-color: #5e7280
+}
+
+#stop:focus {
+    outline: 0;
+}
+
+#stop:disabled {
+    background-color: #f3f1eb
+}
+
+#forward {
+    background-color: transparent;
+    border: 0px;
+    width: 1.8vw;
+    height: 1.8vw;
+    border-radius: 50%;
+}
+
+#forward:hover {
+    background-color: #5e7280
+}
+
+#forward:focus {
+    outline: 0;
+}
+
+#forward:disabled {
+    background-color: #dbdbdb
+}
+
+#backward {
+    background-color: transparent;
+    border: 0px;
+    width: 1.8vw;
+    height: 1.8vw;
+    border-radius: 50%;
+}
+
+#backward:hover {
+    background-color: #5e7280
+}
+
+#backward:focus {
+    outline: 0;
+}
+
+#backward:disabled {
+    background-color: #dbdbdb
+}
+
+
+/*以下loopBtn,bookmark,voice為了讓checkbox不要顯示出來 但有checkbox的屬性*/
+
+.slider {
+    width: 1.8vw;
+    height: 1.8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: rgb(191, 219, 245);
+}
+
+input:disabled+.slider {
+    background: #bbbbbb;
+}
+
+.imgCheckbox {
+    height: 1.3vw;
+    width: 1.3vw;
+    vertical-align: middle;
+}
+
+#loopBtn {
+    display: none;
+}
+
+#bookmark {
+    display: none;
+}
+
+#bookmark:disabled+.slider {
+    background: rgb(191, 219, 245);
+}
+
+#record {
+    background-color: white;
+    border: 0px;
+    width: 1.8vw;
+    height: 1.8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+#record:disabled {
+    background-color: rgb(182, 183, 184)
+}
+
+#record img {
+    width: 5vw;
+    height: 5vw;
+}
+
+#voice {
+    display: none;
+}
+
+.label_edit1 {
+    font-size: 120%;
+    font-family: monospace;
+    font-weight: bold;
+    color: #f0e6d3;
+}
+
+#slash {
+    font-size: 130%;
+    font-weight: bold;
+    color: #f3eaea;
+}
+
+.label_edit2 {
+    font-size: 120%;
+    font-family: monospace;
+    font-weight: bold;
+    color: #f0e6d3;
+}
+
+
+/*----------- col-2 ------------*/
+
+.col-2 {
+    width: 60%;
+    min-height: 40vh;
+    position: relative;
+    margin-left: 50px;
+    margin-top: 80px;
+}
+
+.listTabContainer {
+    display: flex;
+}
+
+.fileListLabel {
+    border-radius: 12px 12px 0px 0px;
+    position: relative;
+    width: 15%;
+    height: 4%;
+    background-color: #E6D8BB;
+    text-indent: 12%;
+    line-height: 100%;
+    cursor: pointer;
+}
+
+.title {
+    margin-top: 6%;
+    margin-left: 2%;
+    font-size: 16px;
+    color: #6c86a8;
+}
+
+.editListLabel {
+    border-radius: 12px 12px 0px 0px;
+    position: relative;
+    width: 15%;
+    height: 4%;
+    background-color: rgb(157, 173, 194);
+    text-indent: 12%;
+    line-height: 100%;
+    cursor: pointer;
+}
+
+.title2 {
+    margin-top: 6%;
+    margin-left: 2%;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.soundListLabel {
+    border-radius: 12px 12px 0px 0px;
+    position: relative;
+    width: 15%;
+    height: 4%;
+    background-color: #A3A3A3;
+    text-indent: 12%;
+    line-height: 100%;
+    cursor: pointer;
+}
+
+.title3 {
+    margin-top: 6%;
+    margin-left: 2%;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.listOuterFrame {
+    border-radius: 0px 12px 12px 12px;
+    width: 26vw;
+    height: 87%;
+    background-color: #E6D8BB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myKLA2 Editor</title>
+
+    <script src="js/three.js"></script>
+    <script src="js/three-vrm.js"></script>
+    <script src="js/GLTFLoader.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/VRMManager.js"></script>
+    <script src="js/tween.umd.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+
+    <!-- bootstrap -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+
+    <link href="css/fileList.css" type="text/css" rel="stylesheet">
+    <link href="css/editList.css" type="text/css" rel="stylesheet">
+    <link href="css/soundList.css" type="text/css" rel="stylesheet">
+    <link href="css/alertPanel.css" type="text/css" rel="stylesheet">
+    <link href="css/topBar.css" type="text/css" rel="stylesheet">
+    <link href="css/information.css" type="text/css" rel="stylesheet">
+    <link href="css/volumeDiv.css" type="text/css" rel="stylesheet">
+    <link href="css/loadingSpinner.css" type="text/css" rel="stylesheet">
+    <script src="../account/loginControl.js"></script>
+
+    <header>
+
+        <!-- Top bar -->
+        <nav id="bar">
+            <div id="topbarLeft">
+                <button title="Video about editor page." id="informationBtnIntro" onclick="window.open('video/editor-intro.mp4')"><img src="img_Reference/information intro.png"></button>
+                <label class="logo2">myKLA2 Editor<label style="font-size: 0.7vw;margin-left: 1vw;" >v20221128</label></label>
+                <a href="../index.html" id="home"><img src="./img_Reference/home.png" width="26vw" height="26vw"></a>
+                <select id="colorSelect" onchange="colorChange(this.selectedIndex)">
+                    <option class="op" id="0">Light Brown Theme</option>
+                    <option class="op" id="1">Light Pink Theme</option>
+                    <option class="op" id="2">Grey Theme</option>
+                    <option class="op" id="3">Dark Brown Theme</option>
+                    <option class="op" id="4">Dark Blue Theme</option>
+                </select>
+                <select id="backSelect" onchange="backChange(this.selectedIndex)">
+                    <option class="op" id="10">Light</option>
+                    <option class="op" id="11">Dark</option>
+                </select>
+            </div>
+
+            <div>
+                <ul id="linkBar">
+                    <li><a class="part" href="../detector/index.html">Detector</a></li>
+                    <li><a class="part" href="../player/index.html">Player</a></li>
+                    <li><a class="part" href="https://cip.nknu.edu.tw/myLogin/form/form.html">Exit</a></li>
+                </ul>
+                <label id="icon">
+                    <i class="fas fa-bars"></i>
+                </label>
+            </div>
+        </nav>
+        <!-- Top bar End-->
+
+    </header>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            <div class="spinner" id="spinner"></div>
+            <div class="message" id="message">
+                Loading
+            </div>
+        </div>
+        <div class="col-1">
+            <div id="alertPanel">
+                <span id="alertContent"><br><br></span>
+                <button class="confirm" id="confirmBtn">Confirm</button>
+                <button id="cancel" onclick="disappearAlertPanel()">Cancel</button>
+            </div>
+
+            <div id="outsideFrame">
+                <div id="KLA">
+                    <div id="informationAreaRule">
+                        <button class="informationBtn"><img src="img_Reference/information.png"></button>
+                        <div class="informationTextRule"><span id="infoTopic"><b>Please pay attention to the following rules :</b></span> <br> 1. Please play the JSON file before editing. <br> 2. Please choose the file before pressing the play button. <br> 3. Please notice not to import
+                            the same file. <br> 4. Please make sure to export the file that you had edited before deleting the file or leaving the website. <br> 5. Please do not mark the same body part at the same time in the file. <br> 6. If the JSON
+                            file that has recorded sound is marked again, the length of the sound and the animation will be different, so if you want to mark it, you may need to record the sound again. <br> 7. Because the recorded sound is used to be
+                            played by the users, so the length of the sound will include the paused time of all marked time. Therefore, before you play the JSON file, please remember to press the bookmark button to synchronize the sound with the animation.
+                        </div>
+                    </div>
+                    <div id="notice">Tip : You can also upload by dragging a json file to this block.</div>
+                    <div id="noticeKLA">Wait for downloading...</div>
+                </div>
+
+
+                <div id="toolBar">
+                    <div id="playerBtnContainer">
+                        <button title="Play" id="play" onclick="execute()"><img src="img_Reference/start2.png"></button>
+                        <button title="Pause" id="pause" onclick="pause()" disabled><img src="img_Reference/pause2.png"></button>
+                        <button title="Stop" id="stop" onclick="stop()"><img src="img_Reference/stop2.png"></button>
+                        <button title="Forward 5 seconds." id="forward" onclick="forward()"><img src="img_Reference/fiveSecF.png"></button>
+                        <button title="Backward 5 seconds." id="backward" onclick="backward()"><img src="img_Reference/fiveSecB.png"></button>
+                        <label class="switch">
+                            <input type="checkbox" id="loopBtn">
+                        
+                            <span title="Loop" class="slider"><img src="img_Reference/refresh.png" class="imgCheckbox" id="imgLoop"><img src="img_Reference/no.png" class="imgCheckbox" id="imgNoLoop" style="display:none;"></span>
+                        </label>
+                        <label class="switchBookmark">
+                            <input type="checkbox" id="bookmark">
+                        
+                            <span title="Pause for 3 seconds when the marked time." class="slider"><img src="img_Reference/bookmark.png" class="imgCheckbox" id="imgBookmark"></span>
+                        </label>
+                        <button id="record">
+                            <img title="Record" id="recordStartImg"   style="display: block;" src="img_Reference/recordStart.png">
+                            <img title="Record pause" id="recordPauseImg" style="display: none;" src="img_Reference/recordPause.png">
+                            <img title="Record" id="recordDisableImg" style="display: none;" src="img_Reference/recordDisable.png">
+                        </button>
+                        <label class="switchVoice">
+                            <input type="checkbox" id="voice">
+                        
+                            <span title="Microphone" class="slider"><img src="img_Reference/microphone.png" class="imgCheckbox" id="microOn" style="display: none;"><img src="img_Reference/noMicrophone.png" class="imgCheckbox" id="microOff"></span>
+                        </label>
+                    </div>
+                    <div>
+                        <label class="label_edit1" id="minute">00</label>
+                        <label class="label_edit1" id="colon">:</label>
+                        <label class="label_edit1" id="second">00.00</label>
+                        <label id="slash">/</label>
+                        <label class="label_edit2" id="lengthMin">00</label>
+                        <label class="label_edit2" id="lengthColon">:</label>
+                        <label class="label_edit2" id="lengthSec">00.00</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2">
+            <div class="listTabContainer">
+                <div class="fileListLabel" onclick="changeToFile()">
+                    <div class="title">File List</div>
+                </div>
+                <div class="editListLabel" onclick="changeToEdit()">
+                    <div class="title2">Edit List</div>
+                </div>
+                <div class="soundListLabel" onclick="changeToSound()">
+                    <div class="title3">Sound List</div>
+                </div>
+            </div>
+            <div class="listOuterFrame">
+                <!--fileList part-->
+                <div class="fileListWhitePart">
+                    <div class="fileListInner">
+
+                        <section>
+                            <table id="filelist"></table>
+                        </section>
+                    </div>
+                    <div id="fileBtnArea">
+                        <button title="Delete JSON file." id="deleteFileBtn" onclick="deleteData()" disabled><img src="img_Reference/delete_lighter.png"></button>
+                        <label title="Import JSON file." for="files" id="importFileBtn"><img src="img_Reference/uploadJSON.png"></label>
+                        <section>
+                            <input type="file" id="files" multiple accept=".json">
+                        </section>
+                    </div>
+                </div>
+                <!--editList part-->
+                <div class="editListWhitePart">
+                    <div id="editListUp">
+                        <div id="selectInputWrapper">
+
+                            <div id="selectorAndInfo">
+                                <div class="informationAreaSelector">
+                                    <button class="informationBtn"><img src="img_Reference/information.png"></button>
+                                    <div class="informationTextSelector">
+                                        Due to the user is expected to make a mirror action according to the virtual character in the player,
+                                        <span style="color: #5e707f; font-weight: bold">the left and right sides of the body parts in the dropdown menu correspond to the sides of the user.</span> For example, if you select the left body part in the dropdown
+                                        menu in the editor, you actually choose the right body part of the virtual character, and in the player, the user will make a corresponding action on the left.
+                                    </div>
+                                </div>
+
+                                <select id="bodySelect">
+                                    <option value = "eye">Eye</option>
+                                    <option value = "mouth">Mouth</option>
+                                    <option value = "neck">Neck</option>
+                                    <option value = "spine">Spine</option>
+                                    <option value = "rightUpperArm">Left Upper Arm</option>
+                                    <option value = "rightLowerArm">Left Lower Arm</option>
+                                    <option value = "leftUpperArm">Right Upper Arm</option>
+                                    <option value = "leftLowerArm">Right Lower Arm</option>
+                                    <option value = "rightHand">Left Hand</option>
+                                    <option value = "leftHand">Right Hand</option>
+                                    <option value = "rightThumb">Left Thumb</option>
+                                    <option value = "rightIndex">Left Index Finger</option>
+                                    <option value = "rightMiddle">Left Middle Finger</option>
+                                    <option value = "rightRing">Left Ring Finger</option>
+                                    <option value = "rightLittle">Left Little Finger</option>
+                                    <option value = "leftThumb">Right Thumb</option>
+                                    <option value = "leftIndex">Right Index Finger</option>
+                                    <option value = "leftMiddle">Right Middle Finger</option>
+                                    <option value = "leftRing">Right Ring Finger</option>
+                                    <option value = "leftLittle">Right Little Finger</option>
+                                    <option value = "rightUpperLeg">Left Upper Leg</option>
+                                    <option value = "rightLowerLeg">Left Lower Leg</option>
+                                    <option value = "leftUpperLeg">Right Upper Leg</option>
+                                    <option value = "leftLowerLeg">Right Lower Leg</option>
+                                </select>
+                            </div>
+                            <input id="inputSpecialTitle" type="text" placeholder="please descript this action"></input>
+
+                        </div>
+                        <div id="editListButtonWrapper">
+                            <button title="Mark" id="btnMark" onclick="markPose()"><img src="./img_Reference/mark.png"></button>
+
+                            <button title="Delete marked data." id="deleteEdit" onclick="deleteEditData()"><img src="img_Reference/delete_lighter.png"></button>
+                        </div>
+
+                    </div>
+
+                    <div class="editListInner">
+
+                        <section style="width: 25vw">
+                            <!--為了讓裡面一排排的button左邊不會有一小段空間-->
+                            <table id="editList"></table>
+                        </section>
+                    </div>
+
+                    <div id="editListBottom">
+                        <div id="infoNExportStatusWrapper">
+                            <div id="informationAreaExport">
+                                <button class="informationBtn"><img src="img_Reference/information.png"></button>
+                                <div class="informationTextExport">When you edited your file, the export light will turn red, please remember to export your file to save it. If you export your file, the light will turn green.</div>
+                            </div>
+
+                            <div id="exportStatus">
+                                Export Status :
+                                <img src="img_Reference/greenLight.png" id="greenLight">
+                                <img src="img_Reference/redLight.png" id="redLight">
+                            </div>
+                        </div>
+
+                        <button title="Export JSON file includes sounds." id="btnExport" onclick="exportFile()"><img src="img_Reference/downloadJSON.png"></button>
+                    </div>
+                </div>
+
+                <!--soundList-->
+                <div class="soundListWhitePart">
+                    <div class="soundListInner">
+                        <table id="soundList">
+                            <thead>
+                                <tr>
+                                    <td id="soundHeader">
+                                        <div>File Name</div>
+                                        <div id="soundHeaderPlay">Play Sound
+                                            <div class="informationAreaSelector">
+                                                <button class="informationBtn"><img src="img_Reference/information.png"></button>
+                                                <div class="informationTextSound">1. When playing a JSON file, the selected audio file will be played. However, when exporting JSON file, all audio files will be exported instead of only the selected audio file.<br>2. You can also click
+                                                    any sound file you want to export.</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody id="soundListBody">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="soundBtnArea">
+                        <input type="file" id="soundLoader" multiple accept="audio/*">
+                        <label title="Import external sound file." class="mp3Button" id="btnMp3Import" for="soundLoader"><img src="img_Reference/uploadMP3.png"></label>
+
+                        <button title="Export recorded sound file." class="mp3Button" id="btnMp3Export" onclick="exportMP3()"><img src="img_Reference/downloadMP3.png"></button>
+                        <button title="Delete sound in JSON." class="mp3Button" id="soundDel" onclick="delSoundItem()"><img src="img_Reference/deleteMusic.png"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/bufferToBase64.js" defer="true"></script>
+        <script defer src="js/buttonVRM.js"></script>
+        <script defer src="js/setVRMScene.js"></script>
+        <script defer src="js/animationVRM.js"></script>
+        <script defer src="js/setVRMPosition.js"></script>
+        <script defer src="js/color.js"></script>
+        <script defer src="js/changeTab.js"></script>
+        <script defer src="js/fileLoad.js"></script>
+        <script src="js/voice.js" defer="true"></script>
+        <script src="js/status.js" defer="true"></script>
+        <script src="./js/base64ToBuffer.js"></script>
+        <script defer src="js/edit.js"></script>
+        <script defer src="js/deleteEditData.js"></script>
+        <script defer src="js/exportData.js"></script>
+        <script defer src="js/utils.js"></script>
+        <script defer src="js/soundFileLoad.js"></script>
+        <script defer src="./js/loadingSpinner.js"></script>
+
+</body>
+
+</html>
